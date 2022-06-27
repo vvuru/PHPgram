@@ -1,6 +1,7 @@
 <?php
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function getParam($key)
 {
     return isset($_GET[$key]) ? $_GET[$key] : "";
@@ -34,6 +35,8 @@ function isGetOne()
 =======
 =======
 >>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
+=======
+>>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
     function getUrlPaths() {
         $getUrl = '';
         if (isset($_GET['url'])) {
@@ -56,6 +59,9 @@ function isGetOne()
         return false;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
+=======
 >>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
 =======
 >>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d

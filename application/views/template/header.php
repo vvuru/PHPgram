@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <header class="container py-3">
     <div id="globalConst">
         <div class="d-flex flex-column flex-md-row align-items-center">
@@ -74,6 +75,9 @@
         </form>
     </div>
 </div>
+=======
+<h1>header</h1>
+>>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
 =======
 <h1>header</h1>
 >>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
