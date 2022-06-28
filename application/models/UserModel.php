@@ -5,7 +5,7 @@ namespace application\models;
 use PDO;
 
 
-//$pdo -> lastInsertId();
+// $pdo->lastInsertId();
 
 class UserModel extends Model
 {

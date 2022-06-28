@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 <header class="container py-3">
     <div id="globalConst">
         <div class="d-flex flex-column flex-md-row align-items-center">
@@ -33,7 +30,7 @@
                     <div class="d-inline-flex dropdown">
                         <a href="#" role="button" id="navDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" class="header_profile">
                             <div class="circleimg h30 w30">
-                                <img src="/static/img/profile/<?= getMainImgSrc() ?>" onerror="this.onerror=null;this.src='/static/img/profile/KakaoTalk_20220627_125236240.png'">
+                                <img src="/static/img/profile/<?= getMainImgSrc() ?>" onerror="this.onerror=null;this.src='/static/img/profile/defaultProfileImg_100.png'">
                             </div>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navDropdownMenuLink">
@@ -75,12 +72,3 @@
         </form>
     </div>
 </div>
-=======
-<h1>header</h1>
->>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
-=======
-<h1>header</h1>
->>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
-=======
-<h1>header</h1>
->>>>>>> 86ec8f6d1f4e8fdf3a12de269d97b6b279bc873d
