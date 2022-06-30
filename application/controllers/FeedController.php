@@ -6,8 +6,8 @@ class FeedController extends Controller
 {
     public function index()
     {
-        $this->addAttribute(_JS, ["feed/index"]);
-        $this->addAttribute(_CSS, ["feed/index"]);
+        $this->addAttribute(_JS, ["feed/index", "https://unpkg.com/swiper@8/swiper-bundle.min.js"]);
+        $this->addAttribute(_CSS, ["feed/index", "https://unpkg.com/swiper@8/swiper-bundle.min.css"]);
         $this->addAttribute(_MAIN, $this->getView("feed/index.php"));
         return "template/t1.php";
 
@@ -62,6 +62,26 @@ class FeedController extends Controller
                     $item->imgList = $this->model->selFeedImgList($item);
                 }
                 return $list;
+        }
+    }
+
+    public function fav()
+    {
+        $urlPaths = getUrlPaths();
+        if (!isset($urlPaths[2])) {
+            exit();
+        }
+        $param = [
+            "ifeed" => intval($urlPaths[2]),
+            "iuser" => getIuser()
+        ];
+        print $urlPaths[2];
+
+        switch (getMethod()) {
+            case _POST:
+                return [_RESULT => $this->model->insFeedFav($param)];
+            case _DELETE:
+                return [_RESULT => $this->model->delFeedFav($param)];
         }
     }
 }

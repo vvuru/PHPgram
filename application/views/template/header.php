@@ -1,15 +1,18 @@
 <div class="header">
     <header class="container py-3">
         <div id="globalConst">
-            <div class="d-flex flex-column flex-md-row align-items-center">
+            <div class="d-flex flex-row align-items-center">
                 <div class="d-inline-flex flex-grow-1 flex-shrink-0">
                     <a href="/feed/index">
                         <img src="/static/svg/logo.svg">
                     </a>
                 </div>
 
+                <div class="d-inline-flex flex-grow-1 flex-shrink-1">
+                </div>
+
                 <div class="d-inline-flex flex-grow-1 flex-shrink-0">
-                    <nav class="d-flex flex-grow-1 flex-column flex-md-row justify-content-end">
+                    <nav class="d-flex flex-grow-1 flex-row justify-content-end">
                         <div class="d-inline-flex me-3">
                             <a href="#" id="btnNewFeedModal" data-bs-toggle="modal" data-bs-target="#newFeedModal">
                                 <svg aria-label="새로운 게시물" class="_8-yf5 " color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
@@ -56,7 +59,6 @@
         </div>
     </header>
 </div>
-
 <!-- New Feed Create Modal -->
 <div class="modal fade" id="newFeedModal" tabindex="-1" aria-labelledby="newFeedModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
