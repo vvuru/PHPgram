@@ -2,24 +2,23 @@
 
 namespace application\controllers;
 
-// require_once "application/utils/UrlUtils.php";
+use application\libs\Application;
 
 class UserController extends Controller
 {
+
+    //로그인
     public function signin()
     {
         switch (getMethod()) {
             case _GET:
                 return "user/signin.php";
             case _POST:
-                $param = [
-                    "email" => $_POST["email"],
-                    "pw" => $_POST["pw"]
-                ];
-                //아이디,비번이 하나라도 없거나 틀리면 > /user/signin
-                //아이디,비번이 맞다면 /feed/index
+                $email = $_POST["email"];
+                $pw = $_POST["pw"];
+                $param = ["email" => $email];
                 $dbUser = $this->model->selUser($param);
-                if ($dbUser === false || !password_verify($param["pw"], $dbUser->pw)) {
+                if (!$dbUser || !password_verify($pw, $dbUser->pw)) {
                     return "redirect:signin?email={$email}&err";
                 }
                 $dbUser->pw = null;
@@ -28,9 +27,8 @@ class UserController extends Controller
                 return "redirect:/feed/index";
         }
     }
-    // return "user/signin.php";
 
-
+    //회원가입
     public function signup()
     {
         switch (getMethod()) {
@@ -39,24 +37,18 @@ class UserController extends Controller
             case _POST:
                 $email = $_POST["email"];
                 $pw = $_POST["pw"];
+                $hashedPw = password_hash($pw, PASSWORD_BCRYPT);
                 $nm = $_POST["nm"];
                 $param = [
                     "email" => $email,
-                    "pw" => $pw,
+                    "pw" => $hashedPw,
                     "nm" => $nm
                 ];
 
-                $param["pw"] = password_hash($param["pw"], PASSWORD_BCRYPT);
                 $this->model->insUser($param);
+
                 return "redirect:signin";
         }
-
-        // if (getMethod() === _GET) {
-        //     return "user/signup.php";
-        // } else if (getMethod() === _POST) {
-        //     return "redirect:signin";
-        // }
-        // return "user/signup.php";
     }
 
     public function logout()
@@ -70,9 +62,48 @@ class UserController extends Controller
         $iuser = isset($_GET["iuser"]) ? intval($_GET["iuser"]) : 0;
         $param = ["feediuser" => $iuser, "loginiuser" => getIuser()];
         $this->addAttribute(_DATA, $this->model->selUserProfile($param));
+
         $this->addAttribute(_JS, ["user/feedwin", "https://unpkg.com/swiper@8/swiper-bundle.min.js"]);
-        $this->addAttribute(_CSS, ["user/feedwin", "https://unpkg.com/swiper@8/swiper-bundle.min.css"]);
+        $this->addAttribute(_CSS, ["user/feedwin", "https://unpkg.com/swiper@8/swiper-bundle.min.css", "feed/index"]);
         $this->addAttribute(_MAIN, $this->getView("user/feedwin.php"));
         return "template/t1.php";
+    }
+
+    public function feed()
+    {
+        if (getMethod() === _GET) {
+            $page = 1;
+            if (isset($_GET["page"])) {
+                $page = intval($_GET["page"]);
+            }
+            $startIdx = ($page - 1) * _FEED_ITEM_CNT;
+            $param = [
+                "startIdx" => $startIdx,
+                "iuser" => $_GET["iuser"]
+            ];
+            $list = $this->model->selFeedList($param);
+            foreach ($list as $item) {
+                $item->imgList = Application::getModel("feed")->selFeedImgList($item);
+            }
+            return $list;
+        }
+    }
+
+    public function follow()
+    {
+
+        $param = [
+            "fromiuser" => getIuser()
+        ];
+
+        switch (getMethod()) {
+            case _POST:
+                $json = getJson();
+                $param["toiuser"] = $json["toiuser"];
+                return [_RESULT => $this->model->insUserFollow($param)];
+            case _DELETE:
+                $param["toiuser"] = $_GET["toiuser"];
+                return [_RESULT => $this->model->delUserFollow($param)];
+        }
     }
 }
