@@ -12,8 +12,8 @@ function getDateTimeInfo(dt) {
     const nowDt = new Date();
     const targetDt = new Date(dt);
 
-    const nowDtSec = parseInt(nowDt.getTime() / 1000);
-    const targetDtSec = parseInt(targetDt.getTime() / 1000);
+    const nowDtSec = parseInt(nowDt.getTime() * 0.001);
+    const targetDtSec = parseInt(targetDt.getTime() * 0.001);
 
     const diffSec = nowDtSec - targetDtSec;
     if(diffSec < 120) {

@@ -25,5 +25,5 @@
         }
     }
     ?>
-
 </head>
+<div id="gData" data-loginuser="<?= getIuser() ?>"></div>

@@ -88,36 +88,3 @@ CREATE TABLE t_dm_msg(
      FOREIGN KEY(idm) REFERENCES t_dm(idm),
      FOREIGN KEY(iuser) REFERENCES t_user(iuser)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

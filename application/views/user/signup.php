@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once "application/views/template/head.php"; ?>
-
 <body>
     <div>
         <h1>회원가입</h1>
@@ -16,5 +15,4 @@
         </form>
     </div>
 </body>
-
 </html>
