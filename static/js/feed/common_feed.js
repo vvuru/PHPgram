@@ -3,6 +3,44 @@ const feedObj = {
     itemLength: 0,
     currentPage: 1,
     swiper: null,
+    getFeedUrl: '',
+    iuser: 0,
+    // infinity scroll
+    setScrollInfinity: function () {
+        window.addEventListener('scroll', e => {
+            // 구조분할할당(js만 가능) / 아래와 같은 결과
+            // const scrollTop = document.documentElement.scrollTop;
+            // document.documentElement.scrollTop
+            
+            const {
+                scrollTop,
+                scrollHeight,
+                clientHeight
+            } = document.documentElement;
+
+            if (scrollTop + clientHeight >= scrollHeight - 5 && this.itemLength === this.limit) {
+                this.getFeedList();
+            }
+        }, { passive: true});
+    },
+    getFeedList: function () {
+        this.itemLength = 0;
+        this.showLoading();            
+        const param = {
+            page: this.currentPage++,        
+            iuser: this.iuser
+        }
+        fetch(this.getFeedUrl + encodeQueryString(param))
+        .then(res => res.json())
+            .then(list => {   
+            this.itemLength = list.length;
+            this.makeFeedList(list);                
+        })
+        .catch(e => {
+            console.error(e);
+            this.hideLoading();
+        });
+    },
     refreshSwipe: function() {
         if(this.swiper !== null) { this.swiper = null; }
         this.swiper = new Swiper('.swiper', {
@@ -38,7 +76,7 @@ const feedObj = {
         const src = '/static/img/profile/' + (item.writerimg ? `${item.iuser}/${item.writerimg}` : 'defaultProfileImg_100.png');
         divCmtItemContainer.innerHTML = `
             <div class="circleimg h24 w24 me-1">
-                <img src="${src}" class="profile w24 pointer">                
+                <img src="${src}" class="profile w24 pointer profileimg">                
             </div>
             <div class="d-flex flex-row">
                 <div class="pointer me-2">${item.writer} - <span class="rem0_8">${getDateTimeInfo(item.regdt)}</span></div>
@@ -71,7 +109,7 @@ const feedObj = {
 
         const regDtInfo = getDateTimeInfo(item.regdt);
         divTop.className = 'd-flex flex-row ps-3 pe-3';
-        const writerImg = `<img src='/static/img/profile/${item.iuser}/${item.mainimg}' 
+        const writerImg = `<img class="profileimg" src='/static/img/profile/${item.iuser}/${item.mainimg}' 
             onerror='this.error=null;this.src="/static/img/profile/defaultProfileImg_100.png"'>`;
 
         divTop.innerHTML = `
@@ -137,10 +175,18 @@ const feedObj = {
                     if(item.isFav === 0) { // 좋아요 취소
                         heartIcon.classList.remove('fas');
                         heartIcon.classList.add('far');
+                        item.favCnt--;
+                        if (item.favCnt === 0) {
+                            divFav.classList.add('d-none');
+                        }
+
                     } else { // 좋아요 처리
                         heartIcon.classList.remove('far');
                         heartIcon.classList.add('fas');
+                        item.favCnt++;
+                        divFav.classList.remove('d-none');
                     }
+                    spanFavCnt.innerHTML = `좋아요 ${item.favCnt}개`;
                 } else {
                     alert('좋아요를 할 수 없습니다.');
                 }
@@ -238,7 +284,9 @@ const feedObj = {
     },
 
     showLoading: function() { this.loadingElem.classList.remove('d-none'); },
-    hideLoading: function() { this.loadingElem.classList.add('d-none'); }
+    hideLoading: function () { this.loadingElem.classList.add('d-none'); },
+    //infinity scroll 시 Loading.gif 
+    isLoading: function () { return !this.loadingElem.classList.contains('d-none'); }
 
 }
 
@@ -303,14 +351,14 @@ function moveToFeedWin(iuser) {
                            if(myJson) {                                
                                 btnClose.click();
 
-                                // 화면에 등록!!!
-                                const lData = document.querySelector('#lData') ;
-                               const gData = document.querySelector('#gData');
-                               if (lData && lData.dataset.toiuser !== gData.dataset.loginuser) { return; }
-                               // 남의 feedWin이 아니라면 화면에 등록!!!
+                                const lData = document.querySelector('#lData');
+                                const gData = document.querySelector('#gData');
+                                if(lData && lData.dataset.toiuser !== gData.dataset.loginiuser) { return; }
+                                // 남의 feedWin이 아니라면 화면에 등록!!!
                                 const feedItem = feedObj.makeFeedItem(myJson);
                                 feedObj.containerElem.prepend(feedItem);
-                                feedObj.refreshSwipe();
+                               feedObj.refreshSwipe();
+                               window.scrollTo(0,0);
                            }
                         });
                         
