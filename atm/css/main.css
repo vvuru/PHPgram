@@ -1,0 +1,329 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* ──────────────────── header ──────────────────── */
+
+.container .a_header {
+    color: #fff;
+    background-color: #0aaaaa;
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10vh; /* = .container .a_main { padding-top: 10vh; } */
+}
+
+.container .a_header .a_header_1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: 1vh 1vw;
+}
+
+
+.container .a_header .a_header_1 .a_header_profile {
+    display: flex;
+    align-items: center;
+}
+
+.container .a_header .a_header_1 .a_header_profile .profile_nm {
+    font-weight: bold;
+}
+
+
+/* header 프로필사진 크기 */
+
+.container .a_header .a_header_1 .a_header_profile .profile_img img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+
+/* header 우측상단 링크 */
+.container .a_header .a_header_1 .a_header_menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ──────────────────── main1 /2 ──────────────────── */
+
+.container .a_main {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 10vh; /*.container .a_header {height 값 만큼 주기} */
+}
+
+.container .a_main .a_main_write {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container .a_main .a_main_write .a_main_write_1 {
+    margin-top: 2vh;
+}
+
+/* 본인url */
+.container .a_main .a_main_write .a_main_write_1 .a_main_write_1_url {
+    background-color: #eee;
+    color: #666666;
+    border-radius: 5px;
+    padding: 1vh 10vw;
+}
+
+/* 공유~이미지 크기 */
+.container .a_main .a_main_write .a_main_write_1 .shareimg {
+    max-width: 3vw;
+    max-height: 3vh;
+}
+
+.container .a_main .a_main_write .a_main_write_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .a_main .a_main_write .a_main_write_2 .a_main_write_2_txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 질문하기 textarea */
+.container .a_main .a_main_write .a_main_write_2 textarea {
+    border: 0;
+    background-color: #eee;
+    color: #666666;
+    border-radius: 5px;
+    margin-top: 2vh;
+    padding: 10px;
+    width: 80vw;
+    height: 20vh;
+}
+
+/* 질문하기, 초기화 */
+.container .a_main .a_main_write .a_main_write_2 .a_main_write_2_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .a_main .a_main_write .a_main_write_2 input {
+    border: 0;
+    background-color: #0aaaaa;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 4vh;
+
+    padding: 1vh 5vw; /* 위 | 오른쪽 | 아래 | 왼쪽 */
+    margin: 2vh 1vw; /* 위 | 오른쪽 | 아래 | 왼쪽 */
+    cursor: pointer;
+
+}
+
+/* ──────────────────── main2 /2 ──────────────────── */
+
+.container .a_main .main_list {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* 탭 전체 스타일 */
+.container .a_main .main_list .tabs {
+    width: 100%;
+}
+
+/* 탭 메뉴(버튼) 스타일 */
+.container .a_main .main_list .tabs .tab_item {
+    width: calc(100%/2);
+    height: 5vh;
+    line-height: 5vh;
+    border-bottom: 3px solid #0aaaaa;
+    background-color: #fff;
+    color: #0aaaaa;
+    display: block;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.container .a_main .main_list .tabs .tab_item:hover {
+    opacity: 0.75;
+}
+
+/* 라디오 버튼 UI삭제*/
+.container .a_main .main_list input[name="tab_item"] {
+    display: none;
+}
+
+/* 탭 컨텐츠 스타일(전체) */
+.container .a_main .main_list .tabs .tab_content {
+    display: none;
+    padding: 1vh 1vh 3vw 1vw; /*상 우 하 좌*/
+    clear: both;
+    overflow: hidden;
+}
+
+/* 탭 컨텐츠 스타일(묶음)  */
+.container .a_main .main_list .tabs .tab_content a {
+    color: #666666;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container .a_main .main_list .tabs .tab_content .tab_content_set {
+    background-color: #fff;
+    color: #666666;
+    margin: 10px;
+}
+
+/* 탭 컨텐츠 스타일(개개)  */
+
+.container .a_main .main_list .tabs .tab_content .tab_content_set .tab_content_each {
+    padding: 5px;
+    font-weight: lighter;
+}
+
+/* 답변자 del */
+.tab_content_each_del_img {
+    max-width: 2vw;
+    max-height: 2vh;
+}
+
+/* 선택 된 탭 콘텐츠를 표시 */
+.container .a_main .main_list #all:checked ~ #all_content,
+.container .a_main .main_list #programming:checked ~ #programming_content {
+    display: block;
+}
+
+/* 선택된 탭 메뉴(버튼) 스타일 */
+.container .a_main .main_list .tabs input:checked + .tab_item {
+    background-color: #0aaaaa;
+    color: #fff;
+}
+
+/* 질문자 프사 */
+.container .a_main .main_list .main_list_img {
+    max-width: 5vw;
+    max-height: 5vh;
+    /* max-width: 50px;
+    max-height: 50px; */
+}
+
+/* 답변자 프사 */
+.container .a_main .main_list .tabs .tab_content .tab_content_set .tab_content_each_profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.container .a_main .main_list .tabs .tab_content .tab_content_answered {
+    /* padding: 1vh 1vw; */
+    background-color: #fff;
+    /* margin: 50px; */
+}
+
+.container .a_main .main_list .tabs .tab_content .tab_content_answered a {
+    color: #666666;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ──────────────────── footer ──────────────────── */
+
+.container .a_footer {
+    background-color: #0aaaaa;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 6vh;
+}
+
+.container .a_footer a {
+    color: #fff;
+}
+
+.container .a_footer .a_footer_answer .a_footer_answer_img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.container .a_footer .a_footer_profile .a_footer_profile_img {
+    max-width: 60px;
+    max-height: 60px;
+}
+
+.container .a_footer .a_footer_notice {
+    position: relative;
+}
+
+.container .a_footer .a_footer_notice .a_footer_notice_img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.container footer .a_footer_login {
+    height: 6vh;
+    width: 100vw;
+    background-color: #000;
+    color: #fff;
+    opacity: 0.7;
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    transform: translate(-1.1em, -60%);
+    position: absolute;
+    border-radius: 50%;
+    background-color: red;
+    padding: 5px;
+    top: 15%;
+  }
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+

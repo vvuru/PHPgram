@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    padding: 0; margin: 0;
+    }
+html {
+    background-color: #eee;
+    }
+
+.Title__top--name {
+        font-size: 17px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #0aaaaa;
+        text-align: center;
+        line-height: 50px;
+    }
+
+.line {
+    margin: 8px 0px;
+    background-color: #ffffff;
+    line-height: 50px;
+    color: #666666;
+
+    }
+.Profile__img img {
+width: 50px;
+height: 50px;
+}
+.line .question {
+    font-weight: bold;
+}
+.ta_md {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ta_md textarea {
+    height: 300px;
+    font-size: 17px;
+    border: 0;
+    outline: none;
+    background-color: #fff;
+    resize: none;
+    color: #666666;
+    width: 98%;
+    }
+.bt {
+    margin: 30px;
+    text-align: center; 
+    } 
+.bt input {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    height: 35px;
+    border: 0px;
+    border-radius: 10px;
+    }
+.bt .bt__md input {
+    color: #fff;
+    background-color: #0aaaaa;
+    }
+
+.bt .bt__cs input {
+    color: #0aaaaa;
+    background-color: #fff;
+    }

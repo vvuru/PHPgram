@@ -1,0 +1,31 @@
+* { box-sizing : border-box; padding: 0; margin: 0; }
+html, body { height: 100%; }
+a {text-decoration: none; color: #000;}
+#container {
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  min-height: 100vh;
+}
+#container > header {
+  background-color: rgb(148, 72, 219);
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.pageSelected {font-weight: bold; color: red;}
+table, tr, th, td {
+  border: solid 1px black;
+  border-collapse: collapse;
+  text-align: center;
+}
+table{
+  width: 100%;
+}
+h1{display: flex; justify-content: center;}
+#listing{display: flex; justify-content: right;}
+#search{display: flex; justify-content: center;}
+.paging{display: flex; justify-content: center;}
+.paging a{padding: 5px;}
+.circular__img{display: inline-block; overflow: hidden; border-radius: 50%;}
+.circular__img img{width: 100%; height: 100%; object-fit: cover;}
+.circular__size40{width: 40px; height: 40px;}

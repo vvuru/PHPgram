@@ -1,0 +1,40 @@
+.tc__pw {
+    margin: 10%;
+    font-size: 17px;
+    font-weight: bold;
+    color: #0aaaaa;
+}
+.pr__ch {
+    margin: 3%;
+    }
+.pr__ch input {
+    width: 500px;
+    height: 32px;
+    font-size: 17px;
+    border: 0;
+    outline: none;
+    background-color: #fff;
+    }
+.bt {
+    margin: 30px;
+    text-align: center; 
+    } 
+.bt input {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    height: 35px;
+    border: 0px;
+    border-radius: 10px;
+    }
+.bt .bt__sv input {
+    color: #fff;
+    background-color: #0aaaaa;
+    }
+
+.bt .bt__cs input {
+    color: #0aaaaa;
+    background-color: #fff;
+    }
